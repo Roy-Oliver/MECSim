@@ -175,34 +175,20 @@ def main():
     u_h = solve_u(u_maxh, H_2, K_h)
     M_red = solve_M(M_Total, M_ox)
 
-    n_conc = []
-    R_int = []
-    I_MEC = []
-    n_act = []
-    n_ohm = []
-    E = []
-    E_applied = []
+    results = []
     for M_red_1, x_a_1 in zip(M_red, x_a):
         res = solve_En(T, M_red_1, m, R_MIN, R_MAX, I_0, beta, M_Total, A_surA, E_CEF, K_R, x_a_1)
-        n_conc.append(res[0])
-        R_int.append(res[1])
-        I_MEC.append(res[2])
-        n_act.append(res[3])
-        n_ohm.append(res[4])
-        E.append(res[5])
-        E_applied.append(res[6])
-    n_conc = np.array(n_conc)
-    R_int = np.array(R_int)
-    I_MEC = np.array(I_MEC)
-    n_act = np.array(n_act)
-    n_ohm = np.array(n_ohm)
-    E = np.array(E)
-    E_applied = np.array(E_applied)
+        results.append(res)
+    results = np.array(results)
+    n_conc = results[:,0]
+    R_int = results[:,1]
+    I_MEC = results[:,2]
+    n_act = results[:,3]
+    n_ohm = results[:,4]
+    E = results[:,5]
+    E_applied = results[:,6]
 
     Q_CH41, Q_CH42, Q_H2 = solve_Q(Y, q_m, x, Y_h, u_h, V, I_MEC, T, m, P)
-
-    plt.plot(t, E)
-    plt.show()
 
 
 main()
