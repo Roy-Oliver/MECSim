@@ -109,7 +109,8 @@ def solve_elrxn(T, M_red, m, R_MIN, R_MAX, I_0, beta, M_Total, A_surA, E_CEF, K_
         eq_24 = (E_CEF + E_applied - R * T / (m * F) * np.log(M_Total / M_red) - n_act * I_MEC) * M_red - I_MEC * (R_int * (e + M_red)) # (24)
         return [eq22, eq205, eq20, eq225, eq_24]
     # Solve the system with initial guess values of 0
-    I_MEC, n_act, n_ohm, E, E_applied = scipy.optimize.fsolve(system, [0, 0, 0, 0, 0], xtol=1E-9)
+    res = scipy.optimize.root(system, [0, 0, 0, 0, 0], tol=1E-9)
+    I_MEC, n_act, n_ohm, E, E_applied = res.x # Unpack the solution
 
     # Return results
     return [n_conc, R_int, I_MEC, n_act, n_ohm, E, E_applied]
