@@ -1,6 +1,30 @@
+"""
+Implementation of a Model for an MEC
+Oliver Roy Mangosing
+August 2025
+
+Implementation is based on the MEC model proposed by [1]. For testing, values of parameters were mainly taken from [1],
+with missing parameter values taken from [2], [3], and [4].
+
+References:
+    [1] R. P. Pinto, B. Srinivasan, and B. Tartakovsky,
+    “A UNIFIED MODEL FOR ELECTRICITY AND HYDROGEN PRODUCTION IN MICROBIAL ELECTROCHEMICAL CELLS,” IFAC Proceedings
+    Volumes, vol. 44, no. 1, pp. 5046–5051, Jan. 2011, doi: 10.3182/20110828-6-it-1002.01636.
+    [2] V. Alcaraz–Gonzalez, G. Rodriguez–Valenzuela, J. J. Gomez–Martinez, G. L. Dotto, and R. A. Flores–Estrella,
+    “Hydrogen production automatic control in continuous microbial electrolysis cells reactors used in wastewater
+    treatment,” Journal of Environmental Management, vol. 281, p. 111869, Dec. 2020, doi: 10.1016/j.jenvman.2020.111869.
+    [3] M. Z. U. Rahman, M. Rizwan, R. Liaquat, V. Leiva, and M. Muddasar, “Model-based optimal and robust control of
+    renewable hydrogen gas production in a fed-batch microbial electrolysis cell,” International Journal of Hydrogen
+    Energy, vol. 48, no. 79, pp. 30685–30701, May 2023, doi: 10.1016/j.ijhydene.2023.04.184.
+    [4] R. A. Flores-Estrella, U. De Jesús Garza-Rubalcava, A. Haarstrick, and V. Alcaraz-González, “A dynamic biofilm
+    model for a microbial electrolysis cell,” Processes, vol. 7, no. 4, p. 183, Mar. 2019, doi: 10.3390/pr7040183.
+
+"""
+
 import scipy
 import numpy as np
 import matplotlib.pyplot as plt
+
 
 
 def solve_uq(u_max, K_A, q_max, A, M_ox, K_M):
