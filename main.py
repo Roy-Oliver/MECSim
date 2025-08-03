@@ -233,7 +233,7 @@ def main():
     u_max = [u_maxa, u_maxm]
     q_max = [q_maxa, q_maxm]
     K_A = [K_Aa, K_Am]
-    q_m = solve_ke(u_max, K_A, q_max, A, M_ox, K_M)[3]
+    u_a, u_m, q_a, q_m = solve_ke(u_max, K_A, q_max, A, M_ox, K_M)
     x = [x_m, x_h]
     u_h = solve_uhc(u_maxh, H_2, K_h)
     M_red = solve_M_red(M_Total, M_ox)
