@@ -224,7 +224,7 @@ def main():
     end = 3 * 24 * 3600 # day -> s
 
     # Solve the differential equations
-    sol = scipy.integrate.solve_ivp(solve_de, [start, end], [A0, x_a0, x_m0, x_h0, M_ox0], t_eval=np.linspace(start, end, 1000), method = "DOP853", rtol=1E-6, atol=1E-9, args=[u_maxa, u_maxm, K_Aa, K_Am, q_maxa, q_maxm, K_M, F_in, V, A_0, K_da, K_dm, K_dh, u_maxh, H_2, K_h, X_max1, X_max2, gamma, m, T, M_Total, R_MIN, R_MAX, I_0, beta, A_surA, E_CEF, K_R, Y_M])
+    sol = scipy.integrate.solve_ivp(solve_de, [start, end], [A0, x_a0, x_m0, x_h0, M_ox0], t_eval=np.linspace(start, end, 1000), method = "DOP853", rtol=1E-9, atol=1E-9, args=[u_maxa, u_maxm, K_Aa, K_Am, q_maxa, q_maxm, K_M, F_in, V, A_0, K_da, K_dm, K_dh, u_maxh, H_2, K_h, X_max1, X_max2, gamma, m, T, M_Total, R_MIN, R_MAX, I_0, beta, A_surA, E_CEF, K_R, Y_M])
     t = sol.t # Time points
     A, x_a, x_m, x_h, M_ox = sol.y # Values of the solution at t
 
